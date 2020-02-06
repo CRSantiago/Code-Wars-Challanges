@@ -10,17 +10,22 @@
 
 import string
 def alphabet_position(text):
-    letter_count = dict(zip(string.ascii_lowercase, [0]*26))
-    count = 1
-    for k,v in letter_count.items():
-        letter_count[k] += count
-        count += 1
-    new_text = text.lower()
-    for k,v in letter_count.items():
-        if k in new_text:
-            new_text = new_text.replace(k,str(v) + ' ')
-        else:
-            new_text += ''
-    return new_text.strip()
 
-print(alphabet_position('-.-'))
+    # ATTEMPT 1
+        # letter_count = dict(zip(string.ascii_lowercase, range(1,27)))
+        # count = 1
+        # for k,v in letter_count.items():
+        #     letter_count[k] += count
+        #     count += 1
+        #new_text = text.lower()
+        # for k,v in letter_count.items():
+        #     if k in new_text:
+        #         new_text = new_text.replace(k,str(v) + ' ')
+        #     else:
+        #         new_text += ''
+        # return new_text.strip()
+
+    # Cleaner Version 2
+    letter_mapping = dict(zip(string.ascii_lowercase, range(1,27)))
+    returned_numbers = [str(letter_mapping[char]) for char in text.lower() if char in letter_mapping]
+    return ' '.join(returned_numbers)
