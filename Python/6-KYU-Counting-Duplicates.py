@@ -16,9 +16,4 @@ def duplicate_count(text):
     count = 0
     for char in text.lower():
         letter_mapping[char] += 1   
-    for v in letter_mapping.values():
-       if v > 1:
-           count += 1
-    return count
-
-print(duplicate_count('aabBcde'))
+    return len([count for v in letter_mapping.values() if v > 1 ])
